@@ -12,14 +12,7 @@ import Img3 from "../assets/img/Rectangle 1918.png";
 import Img4 from "../assets/img/Rectangle 1920.png";
 import Img5 from "../assets/img/Rectangle 1922.png";
 
- //import Team1 from "../assets/img/Ellipse 4.png";
- //import Team2 from "../assets/img/Ellipse 5.png";
- // import Team3 from "../assets/img/Ellipse 6.png";
- // import Team4 from "../assets/img/Ellipse 7.png";
- // import Team5 from "../assets/img/Ellipse 8.png";
- // import Team6 from "../assets/img/Ellipse 9.png"; 
- // import Team7 from "../assets/img/Ellipse 10.png";
- // import Team8 from "../assets/img/Ellipse 11.png";
+
 
 import Header from "../components/Landpage-header";
 
@@ -57,55 +50,7 @@ const SavFiAbout = () => {
     },
   ];
 
-  // Data for Team section
-    /** 
-  const team = [
-    {
-      name: "Elijah Tom",
-      role: "Founder / frontend dev",
-      img: Team1,
-    },
-  
-     *     {
-      name: "Solomon Odunayo",
-      role: "Engineering Lead",
-      img: Team3,
-    },
-    {
-      name: "Abolaji Oladokun",
-      role: "Legal & Compliance",
-      img: Team4,
-    },
-    {
-      name: "Bianca Onwa",
-      role: "Growth & Marketing",
-      img: Team5,
-    },
-    {
-      name: "Chima Umeji",
-      role: "Product Design",
-      img: Team6,
-    },
-    {
-      name: "Isaac Asuquo",
-      role: "Backend Engineer",
-      img: Team7,
-    },
-    {
-      name: "Abas Nwachukwu",
-      role: "Frontend Engineer",
-      img: Team8,
-    },
-   
-    {
-      name: "Kelly Mbaga",
-      role: "Product Manager",
-      img: Team2,
-    },
-    
 
-  ];
- */
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800">
       {/* --- Navigation --- */}
@@ -233,36 +178,7 @@ const SavFiAbout = () => {
         </div>
       </section>
 
-      {/* --- Team Section 
-      <section className="py-20 px-6 max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-6xl font-bold text-center text-blue-500 mb-16">
-          The right talents, the perfect team.
-        </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 justify-items-center">
-          {team.map((member, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center text-center w-full max-w-xs"
-            >
-              {/* Circle Image Container with Gradient Border Effect
-              <div className="relative p-1 rounded-full bg-gradient-to-tr from-blue-400 to-blue-200 mb-6">
-                <div className="p-1 bg-white rounded-full">
-                  <img
-                    src={member.img}
-                    alt={member.name}
-                    className="w-50 h-50 rounded-full object-cover transition duration-300"
-                  />
-                </div>
-              </div>
-
-              <h3 className="text-xl font-bold text-blue-600">{member.name}</h3>
-              <p className="text-gray-500 text-sm mt-1">{member.role}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      --- */}
 
       {/* --- Footer (Reused) --- */}
       <footer className="bg-gray-900 text-white">
