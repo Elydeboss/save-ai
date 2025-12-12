@@ -58,13 +58,14 @@ const SavFiAbout = () => {
   ];
 
   // Data for Team section
+    /** 
   const team = [
     {
       name: "Elijah Tom",
       role: "Founder / frontend dev",
       img: Team1,
     },
-    /** 
+  
      *     {
       name: "Solomon Odunayo",
       role: "Engineering Lead",
@@ -95,15 +96,16 @@ const SavFiAbout = () => {
       role: "Frontend Engineer",
       img: Team8,
     },
-    */
+   
     {
       name: "Kelly Mbaga",
       role: "Product Manager",
       img: Team2,
     },
+    
 
   ];
-
+ */
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800">
       {/* --- Navigation --- */}
@@ -231,7 +233,7 @@ const SavFiAbout = () => {
         </div>
       </section>
 
-      {/* --- Team Section --- */}
+      {/* --- Team Section 
       <section className="py-20 px-6 max-w-4xl mx-auto">
         <h2 className="text-3xl md:text-6xl font-bold text-center text-blue-500 mb-16">
           The right talents, the perfect team.
@@ -243,7 +245,7 @@ const SavFiAbout = () => {
               key={index}
               className="flex flex-col items-center text-center w-full max-w-xs"
             >
-              {/* Circle Image Container with Gradient Border Effect */}
+              {/* Circle Image Container with Gradient Border Effect
               <div className="relative p-1 rounded-full bg-gradient-to-tr from-blue-400 to-blue-200 mb-6">
                 <div className="p-1 bg-white rounded-full">
                   <img
@@ -260,6 +262,7 @@ const SavFiAbout = () => {
           ))}
         </div>
       </section>
+      --- */}
 
       {/* --- Footer (Reused) --- */}
       <footer className="bg-gray-900 text-white">
