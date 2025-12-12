@@ -14,12 +14,12 @@ import Img5 from "../assets/img/Rectangle 1922.png";
 
 import Team1 from "../assets/img/Ellipse 4.png";
 import Team2 from "../assets/img/Ellipse 5.png";
-import Team3 from "../assets/img/Ellipse 6.png";
-import Team4 from "../assets/img/Ellipse 7.png";
-import Team5 from "../assets/img/Ellipse 8.png";
-import Team6 from "../assets/img/Ellipse 9.png";
-import Team7 from "../assets/img/Ellipse 10.png";
-import Team8 from "../assets/img/Ellipse 11.png";
+ // import Team3 from "../assets/img/Ellipse 6.png";
+ // import Team4 from "../assets/img/Ellipse 7.png";
+ // import Team5 from "../assets/img/Ellipse 8.png";
+ // import Team6 from "../assets/img/Ellipse 9.png";
+ // import Team7 from "../assets/img/Ellipse 10.png";
+ // import Team8 from "../assets/img/Ellipse 11.png";
 
 import Header from "../components/Landpage-header";
 
@@ -64,12 +64,8 @@ const SavFiAbout = () => {
       role: "Founder / frontend dev",
       img: Team1,
     },
-    {
-      name: "Kelly Mbaga",
-      role: "Product Manager",
-      img: Team2,
-    },
-    {
+    /** 
+     *     {
       name: "Solomon Odunayo",
       role: "Engineering Lead",
       img: Team3,
@@ -99,6 +95,13 @@ const SavFiAbout = () => {
       role: "Frontend Engineer",
       img: Team8,
     },
+    */
+    {
+      name: "Kelly Mbaga",
+      role: "Product Manager",
+      img: Team2,
+    },
+
   ];
 
   return (
