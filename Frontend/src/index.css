@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700&family=Geist:wght@100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700&family=Geist:wght@100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import "tailwindcss";
+/*@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@600&display=swap");*/
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  --color-light: #ffffff;
+  --color-blue: #2092e9;
+  --color-black: #1e1e1e;
+  --color-white: #f9f9f9;
+  --color-tet: #f9fbf9;
+  --color-neutral-50: #fcfdfd;
+  --color-black-text: #0c0c0e;
+  --color-neutral-200: #f3f4f6;
+  --color-blue-hover: #baddf8;
+  --color-gray: #e5e8eb;
+  --color-gray-50: #a3a5a7;
+  --color-muted-foreground: #67686b;
+  --font-dm-sans: DM Sans, "sans-serif";
+  --font-instrument-sans: "Instrument Sans", sans-serif;
+  --color-foreground: #23272f;
+  --color-card: #ffffff;
+  --color-card-foreground: #23272f;
+
+  --color-primary: #2092e9;
+  --color-primary-foreground: #ffffff;
+  --color-primary-light: #58c3ff;
+  --color-primary-dark: #007ac2;
+
+  --color-secondary: #f0f4f8;
+  --color-secondary-foreground: #23272f;
+
+  --color-muted: #f2f6f9;
+  --color-muted-foreground: #6e737b;
+
+  --color-accent: #ffc928;
+  --color-accent-foreground: #23272f;
+
+  --color-success: #33b86b;
+  --color-success-foreground: #ffffff;
+
+  --color-destructive: #e53935;
+  --color-destructive-foreground: #ffffff;
+
+  --color-border: #e3e8ed;
+  --color-input: #e3e8ed;
+  --color-ring: #1ba8ff;
+
+  --color-radius: 0.75rem;
+
+  /* Dark Mode Overrides */
+  --color-muted-foreground-dark: #ffffffcc;
+  --color-foreground-dark: #ffffff;
+  --color-neutral-50-dark: #374151;
+  --color-neutral-200-dark: #2d2d2d;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+[data-theme="dark"] {
+  --color-muted-foreground: var(--color-muted-foreground-dark);
+  --color-foreground: var(--color-foreground-dark);
+  --color-neutral-50: var(--color-neutral-50-dark);
+  --color-neutral-200: var(--color-neutral-200-dark);
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@utility animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+@utility animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+@utility animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+@utility animate-slide-up {
+  animation: slide-up 0.6s ease-out;
+}
+
+@utility animate-float {
+  animation: float 3s ease-in-out infinite;
+}
