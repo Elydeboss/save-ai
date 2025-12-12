@@ -3,14 +3,7 @@ import Community from '../components/public/Community';
 import CTA from '../components/public/CTA';
 import Footer from '../components/public/Footer';
 import { Shield, Target, Users, TrendingUp } from 'lucide-react';
-import Member1 from '../assets/public/team1.svg';
-import Member2 from '../assets/public/team2.svg';
-import Member3 from '../assets/public/team3.svg';
-import Member4 from '../assets/public/team4.svg';
-import Member5 from '../assets/public/team5.svg';
-import Member6 from '../assets/public/team6.svg';
-import Member7 from '../assets/public/team7.svg';
-import Member8 from '../assets/public/team8.svg';
+
 
 const values = [
   {
@@ -141,86 +134,7 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Our Team Section */}
-        <section className="py-20 lg:py-32">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                Meet Our Team
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                The passionate people behind SaveFi's mission to transform
-                savings in Nigeria
-              </p>
-            </div>
 
-            <div className="grid md:w-[80%] mx-auto justify-center items-center md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  name: 'Elijah Tom',
-                  role: 'Co-Founder',
-                  image: Member1,
-                },
-                {
-                  name: 'Jolly Akeju',
-                  role: 'Product Designer',
-                  image: Member2,
-                },
-                {
-                  name: 'Adewale Adesanya',
-                  role: 'Frontend Engineer',
-                  image: Member3,
-                },
-                {
-                  name: 'Abolaji Oladokun',
-                  role: 'Product Designer',
-                  image: Member4,
-                },
-                {
-                  name: 'Bianca Onovo',
-                  role: 'Product Manager',
-                  image: Member5,
-                },
-                {
-                  name: 'Chidera Umeji',
-                  role: 'Product Manager',
-                  image: Member6,
-                },
-                {
-                  name: 'Isaac Sopulu',
-                  role: 'Backend Engineer',
-                  image: Member7,
-                },
-                {
-                  name: 'Peter Yeboah',
-                  role: 'Frontend Engineer',
-                  image: Member8,
-                },
-              ].map((member, index) => (
-                <div
-                  key={member.name}
-                  className="group flex flex-col justify-center items-center animate-slide-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="relative w-40 border-2 border-[#98CDF5] overflow-hidden rounded-full mb-4">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full  object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                  <h3 className="text-xl text-center font-bold font-['Inter'] text-primary mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-foreground text-center font-medium">
-                    {member.role}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         <Community />
         <CTA />
