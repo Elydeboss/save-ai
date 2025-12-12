@@ -17,7 +17,7 @@ import Team2 from "../assets/img/Ellipse 5.png";
  // import Team3 from "../assets/img/Ellipse 6.png";
  // import Team4 from "../assets/img/Ellipse 7.png";
  // import Team5 from "../assets/img/Ellipse 8.png";
- // import Team6 from "../assets/img/Ellipse 9.png";
+ // import Team6 from "../assets/img/Ellipse 9.png"; 
  // import Team7 from "../assets/img/Ellipse 10.png";
  // import Team8 from "../assets/img/Ellipse 11.png";
 
