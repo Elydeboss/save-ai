@@ -12,8 +12,8 @@ import Img3 from "../assets/img/Rectangle 1918.png";
 import Img4 from "../assets/img/Rectangle 1920.png";
 import Img5 from "../assets/img/Rectangle 1922.png";
 
-import Team1 from "../assets/img/Ellipse 4.png";
-import Team2 from "../assets/img/Ellipse 5.png";
+ //import Team1 from "../assets/img/Ellipse 4.png";
+ //import Team2 from "../assets/img/Ellipse 5.png";
  // import Team3 from "../assets/img/Ellipse 6.png";
  // import Team4 from "../assets/img/Ellipse 7.png";
  // import Team5 from "../assets/img/Ellipse 8.png";
