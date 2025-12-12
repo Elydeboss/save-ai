@@ -3,7 +3,7 @@ import {
   USX_ADDRESS,
   VAULT_ADDRESS,
   STABLECOIN_DECIMALS,
-} from "../constants/addresses";
+} from "../constant/addresses";
 
 // Assuming you import your ABIs like this:
 import USX_ABI from "../abis/StablecoinABI.json";
@@ -11,9 +11,9 @@ import VAULT_ABI from "../abis/VaultABI.json"; // The ABI for your compiled Vaul
 
 /**
  * Executes the entire two-step process: Approval and Deposit.
- * @param {string} amount The amount of USX to save (e.g., "100.5").
+ * @param amount The amount of USX to save (e.g., "100.5").
  */
-export async function saveStablecoin(amount) {
+export async function saveStablecoin(amount: string): Promise<string> {
   if (!window.ethereum) {
     throw new Error("Wallet provider (e.g., MetaMask) not found.");
   }

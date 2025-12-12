@@ -1,41 +1,102 @@
 import { useState } from "react";
 import Navbar from "../components/dashboard/Navbar";
-
 import Breadcrumb from "../components/Breadcrumb";
-import { ChevronDown } from "lucide-react";
-
+import { ChevronDown, Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import FlexiFi from "../assets/savingplan/vacation.svg";
 
+// Import types for event handling
+import type { ChangeEvent } from "react";
+
+// 1. IMPORT YOUR WEB3 INTERACTION FUNCTION
+import { saveStablecoin } from "../services/blockchain.ts"; // Adjust path as needed
+
 export default function FlexiFiPlan() {
   const navigate = useNavigate();
+
+  // --- EXISTING STATE ---
   const [planName, setPlanName] = useState("");
   const [amount, setAmount] = useState("");
   const [understood, setUnderstood] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
 
+  // --- NEW STATE FOR WEB3 INTERACTION (Typed for TypeScript) ---
+  // Fix 1: Explicitly type null/string for error and success
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+
+  // --- EXISTING CALCULATIONS ---
   const availableBalance = 120.54;
   const lockedAmount = amount ? parseFloat(amount) : 0;
   const expectedInterest = lockedAmount * 0.08;
   const totalPayout = lockedAmount + expectedInterest;
 
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUnderstood(event?.target.checked); // Toggle the checked state
+  // --- EXISTING CHECKBOX HANDLERS (Typed for TypeScript) ---
+  // Fix 2: Use ChangeEvent<HTMLInputElement> and remove optional chaining
+  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setUnderstood(event.target.checked);
   };
 
-  const handleAgreeCheckboxChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setAgreed(event?.target.checked); // Toggle the checked state
+  const handleAgreeCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setAgreed(event.target.checked);
   };
 
-  const isButtonDisabled = !(
-    amount &&
-    parseFloat(amount) > 0 &&
-    understood &&
-    agreed
-  );
+  // Check if the button should be disabled
+  const isButtonDisabled =
+    !(amount && parseFloat(amount) > 0 && understood && agreed) || isProcessing;
+
+  // 3. DEFINE THE ASYNC HANDLER FOR THE BUTTON CLICK
+  const handleCreatePlan = async () => {
+    // Clear previous states
+    setError(null);
+    setSuccess(null);
+
+    if (isButtonDisabled) return;
+
+    setIsProcessing(true);
+
+    try {
+      // We pass the string amount to the Web3 function
+      // Assuming saveStablecoin returns a string (txHash)
+      const txHash = await saveStablecoin(amount);
+
+      setSuccess(
+        `Plan created successfully! Transaction Hash: ${txHash?.substring(
+          0,
+          8
+        )}...`
+      );
+    } catch (err) {
+      console.error("Transaction Error:", err);
+      let errorMessage = "Transaction failed. Please check your wallet.";
+
+      // Fix 3: Safely handle 'unknown' error type
+      if (err instanceof Error) {
+        errorMessage = err.message || errorMessage;
+      } else if (
+        typeof err === "object" &&
+        err !== null &&
+        "message" in err &&
+        typeof err.message === "string"
+      ) {
+        errorMessage = err.message;
+      }
+
+      // Add a common fallback for user-rejected transactions
+      if (
+        errorMessage.includes("MetaMask Tx Signature") ||
+        errorMessage.includes("user rejected transaction")
+      ) {
+        errorMessage = "Transaction rejected by user.";
+      }
+
+      setError(errorMessage);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
 
   return (
     <div className="bg-neutral-200 min-h-screen dark:bg-gray-600 dark:text-white">
@@ -179,12 +240,12 @@ export default function FlexiFiPlan() {
               {/* Amount to Lock */}
               <div>
                 <label className="text-sm font-medium text-foreground mb-2 block">
-                  Amount to lock (USDT)
+                  Amount to lock (USX)
                 </label>
                 <div className="flex items-center gap-4 text-[#979799] placeholder:text-[#979799] rounded-md p-3 bg-[#EAEDEF] dark:bg-gray-600 dark:text-white/80">
                   <input
                     type="number"
-                    placeholder="e.g Rent 2025, Laptop savings"
+                    placeholder="e.g 100"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     className="text-base flex-1 text-[#979799] placeholder:text-[#979799] bg-[#EAEDEF] dark:bg-gray-600 dark:text-white/80 dark:placeholder:text-white/80  focus:outline-0"
@@ -199,7 +260,7 @@ export default function FlexiFiPlan() {
                 <div className="flex items-center justify-between mt-2">
                   <span className="text-sm text-muted-foreground">
                     Available balance:{" "}
-                    <span className="font-bold">{availableBalance} USDT</span>
+                    <span className="font-bold">{availableBalance} USX</span>
                   </span>
                 </div>
               </div>
@@ -212,7 +273,7 @@ export default function FlexiFiPlan() {
                       Amount to be locked
                     </span>
                     <span className="text-base font-semibold text-foreground">
-                      {lockedAmount.toFixed(2)} USDT
+                      {lockedAmount.toFixed(2)} USX
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
@@ -220,7 +281,7 @@ export default function FlexiFiPlan() {
                       Expected interest earned
                     </span>
                     <span className="text-base font-semibold text-[#27B97D]">
-                      +{expectedInterest.toFixed(2)} USDT
+                      +{expectedInterest.toFixed(2)} USX
                     </span>
                   </div>
                   <div className="flex items-center justify-between pt-3">
@@ -228,7 +289,7 @@ export default function FlexiFiPlan() {
                       Total payout at maturity
                     </span>
                     <span className="text-lg font-bold text-foreground">
-                      {totalPayout.toFixed(2)} USDT
+                      {totalPayout.toFixed(2)} USX
                     </span>
                   </div>
                 </div>
@@ -271,23 +332,38 @@ export default function FlexiFiPlan() {
               </div>
             </div>
           </div>
+
+          {/* Status Messages */}
+          {error && (
+            <div className="mt-4 p-3 rounded-md bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300 font-medium">
+              {error}
+            </div>
+          )}
+          {success && (
+            <div className="mt-4 p-3 rounded-md bg-[#27B97D]/10 text-[#27B97D] dark:bg-green-900/50 dark:text-[#27B97D] font-medium">
+              {success}
+            </div>
+          )}
+
           {/* Actions */}
           <div className="flex gap-3 mt-5 w-[80%] mx-auto">
             <button
-              onClick={() => navigate("/savings")}
-              disabled={isButtonDisabled} // Disable button based on conditions
+              onClick={handleCreatePlan}
+              disabled={isButtonDisabled}
               className={`flex-1 border-2 font-semibold cursor-pointer py-2.5 rounded-full 
                   ${
                     isButtonDisabled
                       ? "bg-blue/40 border-blue/40 text-white/70 cursor-not-allowed"
                       : "bg-blue text-white border-blue hover:bg-blue/90"
-                  }`}
+                  } flex items-center justify-center space-x-2`}
             >
-              Create plan
+              {isProcessing && <Loader2 className="w-5 h-5 animate-spin" />}
+              <span>{isProcessing ? "Processing..." : "Create plan"}</span>
             </button>
             <button
               onClick={() => navigate("/savings/new")}
               className="flex-1 text-blue border-2 font-semibold cursor-pointer border-blue py-2.5 rounded-full"
+              disabled={isProcessing}
             >
               Cancel
             </button>

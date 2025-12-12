@@ -4,6 +4,7 @@ import { UserProfileProvider } from "./contexts/UserProfileContext.tsx";
 import Vaultfi from "./pages/vaultfi.tsx";
 import Growfi from "./pages/Growfi.tsx";
 import Flexifi from "./pages/Flexfi.tsx";
+
 //import Dashboard from "./pages/Dashboard";
 
 import Home from "./pages/Home";
@@ -23,6 +24,7 @@ import SwiftFiPlan from "./pages/SwiftFiPlan";
 import VaultFiPlan from "./pages/VaultFiPlan";
 import GrowFiPlan from "./pages/GrowFiPlan";
 import FlexiFiPlan from "./pages/FlexiFiPlan";
+
 import HelpSupport from "./pages/HelpSupport";
 import MainDashboard from "./pages/MainDashboard";
 import DashboardHome from "./pages/DashboardHome";
@@ -88,6 +90,7 @@ const App: React.FC = () => {
             <Route path="/savings/vaultfi/create" element={<VaultFiPlan />} />
             <Route path="/savings/growfi/create" element={<GrowFiPlan />} />
             <Route path="/savings/flexfi/create" element={<FlexiFiPlan />} />
+            
             <Route path="transactions" element={<TransactionPage />}></Route>
             <Route path="/savebot" element={<Savebot />} />
           </Route>
